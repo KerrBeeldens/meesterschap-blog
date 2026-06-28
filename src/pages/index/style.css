@@ -1,3 +1,86 @@
 body {
-    background-color: rebeccapurple;
+    position: relative;
+    height: 100vh;
+    color: white;
+
+    /* TODO: temp, remove */
+    background: url("resources/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header {
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    display: flex;
+    align-items: center;
+    padding-block: 0.25rem;
+    padding-right: min(5rem, 5%);
+    padding-left: min(10rem, 10%);
+    border: 2px solid rgb(170, 170, 170);
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    text-shadow: white 0px 0px 0.4em;
+    font-size: 1.5rem;
+}
+
+.clock {
+    height: 1em;
+    aspect-ratio: 1;
+    margin-left: 0.5em;
+    border: 0.2rem solid white;
+    border-radius: 50%;
+    position: relative;
+
+    /* Hour hand */
+    &::after {
+        content: "";
+        width: 12%;
+        height: 35%;
+        background-color: white;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%) rotate(calc(var(--hours, 0) / 12 * 360deg));
+        transform-origin: bottom;
+    }
+
+    /* Minute hand */
+    &::before {
+        content: "";
+        width: 12%;
+        height: 55%;
+        background-color: white;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%) rotate(calc(var(--minutes, 0) / 60 * 360deg));
+        transform-origin: bottom;
+    }
+
+    /* center pivot */
+    & .clock-center {
+        width: 12%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Header with date, time and clock */
+@media (max-width: 600px) {
+    header {
+        display: none;
+    }
+}
+
 }
