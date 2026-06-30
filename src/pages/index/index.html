@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+
     <title>Meesterschap Blog - Kerr</title>
+
+    <link rel="icon" type="image/x-icon" href="../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
 </head>
 
 <body>
@@ -15,6 +21,216 @@
             <div class="clock-center"></div>
         </div>
     </header>
+
+    <audio src="./resources/cursor.mp3" class="cursor-sound"></audio>
+    <audio src="./resources/boot.mp3" class="boot-sound"></audio>
+    <audio src="./resources/select.mp3" class="select-sound"></audio>
+
+    <main>
+
+        <ul class="xmb">
+
+            <li class="category">
+
+                <div class="category-icon">
+                    <span class="iconify" data-icon="fluent:settings-16-filled"></span>
+                    <div class="text">Settings</div>
+                </div>
+
+                <ol class="items">
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:dark-theme-20-filled"></span>
+                        Light/dark mode
+                    </li>
+                </ol>
+            </li>
+
+            <li class="category">
+
+                <div class="category-icon">
+                    <span class="iconify" data-icon="fluent:hat-graduation-16-filled"></span>
+                    <div class="text">Leerdoelen</div>
+                </div>
+
+                <ol class="items">
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:calendar-arrow-repeat-all-16-filled"></span>
+                        Iteratief Werken
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:code-js-rectangle-16-filled"></span>
+                        Javascript
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:laptop-person-24-filled"></span>
+                        User Experience
+                    </li>
+                </ol>
+            </li>
+
+            <li class="category">
+
+                <div class="category-icon">
+                    <span class="iconify" data-icon="fluent:book-16-filled"></span>
+                    <div class="text">Vakken</div>
+                </div>
+
+                <ol class="items">
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:code-block-16-filled"></span>
+                        Sprint 0
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:form-20-filled"></span>
+                        Browser Technologies
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:cube-12-filled"></span>
+                        CSS to the Rescue
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:planet-20-filled"></span>
+                        Hackaton
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:lightbulb-28-filled"></span>
+                        API
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:people-search-24-filled"></span>
+                        Human Centered Design
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:movies-and-tv-16-filled"></span>
+                        Meesterproef
+                    </li>
+                </ol>
+            </li>
+
+            <li class="category">
+
+                <div class="category-icon">
+                    <span class="iconify" data-icon="fluent:thinking-20-filled"></span>
+                    <div class="text">Reflecties</div>
+                </div>
+
+                <ol class="items">
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:thinking-20-filled"></span>
+                        reflectiegesprek 1
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:thinking-20-filled"></span>
+                        reflectiegesprek 2
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:trophy-16-filled"></span>
+                        Eindreflectie
+                    </li>
+                </ol>
+            </li>
+
+            <li class="category">
+
+                <div class="category-icon">
+                    <span class="iconify" data-icon="fluent:megaphone-loud-16-filled"></span>
+                    <div class="text">Weekly Nerd</div>
+                </div>
+
+                <ol class="items">
+                    <li class="item">
+                        <img src="./resources/voorhoede.png" alt="De Voorhoede" class="speaker-image">
+                        De Voorhoede
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/hans.png" alt="Hans Zwart" class="speaker-image">
+                        Hans Zwart
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/johan.png" alt="Johan Huijkman" class="speaker-image">
+                        Johan Huijkman
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/kilian.png" alt="Kilian Valkhof" class="speaker-image">
+                        Kilian Valkhof
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/nils.png" alt="Nils Binder" class="speaker-image">
+                        Nils Binder
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/peter.png" alt="Peter-Paul Koch" class="speaker-image">
+                        Peter-Paul Koch
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/q42.png" alt="Q42" class="speaker-image">
+                        Q42
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/robbert.png" alt="Robbert Broersma" class="speaker-image">
+                        Robbert Broersma
+                    </li>
+
+                    <li class="item">
+                        <img src="./resources/rosa.png" alt="Rosa Schuurmans" class="speaker-image">
+                        Rosa Schuurmans
+                    </li>
+                </ol>
+            </li>
+
+            <li class="category">
+
+                <div class="category-icon">
+                    <span class="iconify" data-icon="fluent:glasses-16-filled"></span>
+                    <div class="text">Weekly Geek</div>
+                </div>
+
+                <ol class="items">
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:image-circle-48-filled"></span>
+                        Tahoe Icons
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:globe-32-filled"></span>
+                        UX of HTML
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:draw-text-24-regular"></span>
+                        Onput
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:emoji-sparkle-24-filled"></span>
+                        Exclusive Design Principles
+                    </li>
+
+                    <li class="item">
+                        <span class="iconify" data-icon="fluent:bot-16-filled"></span>
+                        Agentic Web
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </main>
 </body>
 
 </html>

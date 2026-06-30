@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Nerd - Hans Zwart</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Weekly Nerd</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-05-21">21 Mei 2026</time>
+
+                <h1>Hans Zwart</h1>
+
+                <section class="introduction">
+                    Privacy is geen luxe, het is een grondrecht. Tijdens zijn presentatie legde Hans Zwart uit wat
+                    privacy echt betekent: een individueel recht, maar ook een democratische noodzaak. Want wie
+                    controle heeft over jouw data, heeft macht over jou.
+
+                    <p class="author">Geschreven door <a href="https://github.com/KerrBeeldens">Kerr</a></p>
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Heb jij iets te verbergen?</h2>
+
+                    <p>
+                        Hans begon met een straatinterview waarbij mensen werd gevraagd of ze iets te verbergen
+                        hadden. Wie zei van niet, werd doorgevraagd. Uiteindelijk weigerde iedereen toch te
+                        antwoorden. Dat zegt genoeg: iedereen heeft iets te verbergen, maar we beseffen het pas als
+                        het dichtbij komt.
+                    </p>
+
+                    <h2>Wat is privacy?</h2>
+
+                    <p>
+                        Hans beschreef privacy op drie manieren. Het is een individueel recht om met rust gelaten
+                        te worden. Het is een sociaal recht om in elke situatie jezelf te kunnen zijn. Je gedraagt
+                        je anders bij de dokter dan bij vrienden, en dat is normaal. En het is een democratische
+                        noodzaak om zelfstandig je mening te kunnen vormen.
+                    </p>
+
+                    <p>
+                        Een belangrijk begrip hierbij is contextuele integriteit. Privacy betekent dat er geen
+                        onverwachte dingen worden gedeeld met onverwachte partijen. Privacy gaat ook over controle
+                        over je eigen data. En data is macht.
+                    </p>
+
+                    <blockquote class="blockquote">
+                        Data is macht. Wie kennis heeft over jou, kan macht over jou uitoefenen.
+                        <span>— Hans Zwart</span>
+                    </blockquote>
+
+                    <h2>De wet als gezond verstand</h2>
+
+                    <p>
+                        De privacywetgeving klinkt misschien ingewikkeld, maar is eigenlijk gewoon common sense. Het
+                        gaat alleen over persoonsgegevens: data die gekoppeld kan worden aan een persoon. Een paar
+                        belangrijke principes:
+                    </p>
+
+                    <ul>
+                        <li>Toestemming moet vrij zijn, geïnformeerd zijn en op elk moment kunnen worden
+                            ingetrokken.</li>
+                        <li>Doelbinding: data die je verzamelt voor één doel mag je niet voor een ander doel
+                            gebruiken.</li>
+                        <li>Inzage en correctie: mensen mogen hun eigen data inzien, aanpassen en laten
+                            verwijderen.</li>
+                        <li>Dataminimalisatie: verzamel alleen wat je echt nodig hebt.</li>
+                    </ul>
+
+                    <p>
+                        Om zo min mogelijk data op te slaan bestaan er technische oplossingen zoals hashes, blind
+                        signatures en differential privacy. Die geven je de functionaliteit die je wilt, zonder dat
+                        je persoonsgegevens hoeft op te slaan.
+                    </p>
+
+                    <h2>Privacy op het web</h2>
+
+                    <p>
+                        Hans liet zien hoeveel partijen meekijken bij een bezoek aan nu.nl. In de developer tools
+                        waren 183 requests te zien bij één enkel bezoek. Je data wordt in real time geveild voor
+                        een advertentieplaatsje. Je bent niet de gebruiker, je bent het product.
+                    </p>
+
+                    <p>
+                        Hij noemde ook acht strategieën om privacy in te bouwen in systemen: inform, control,
+                        separate, minimise, abstract, hide, demonstrate en enforce. Die helpen om privacy niet als
+                        iets van achteraf te zien, maar als een ontwerpkeuze.
+                    </p>
+
+                    <h2>Wat neem ik hiervan mee?</h2>
+
+                    <p>
+                        De presentatie heeft me bewuster gemaakt van wat ik als developer doe met data. Het is
+                        verleidelijk om gegevens op te slaan "voor het geval dat", maar dat is precies de
+                        mentaliteit die privacy ondermijnt. Dataminimalisatie zou een vanzelfsprekende reflex moeten
+                        zijn.
+                    </p>
+
+                    <p>
+                        De 183 requests bij nu.nl bleven ook hangen. Als developer draag je bij aan dat systeem,
+                        bewust of niet. Het loont om goed na te denken over welke scripts en trackers je inlaadt en
+                        of dat echt nodig is.
+                    </p>
+
+                    <blockquote class="blockquote">
+                        Privacy is geen instelling die je achteraf aanzet. Het is iets dat je van het begin af aan
+                        inbouwt.
+                    </blockquote>
+
+                    <p>
+                        De vraag die ik mezelf voortaan wil stellen: wat is het minste wat ik hoef te weten om dit
+                        te laten werken?
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
+</body>
+
+</html>

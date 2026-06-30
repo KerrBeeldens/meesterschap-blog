@@ -1,47 +1,81 @@
+:root {
+    --color-fg: white;
+    --color-bg: black;
+    --background-image: url("resources/background.jpg");
+}
+
+/* Light mode fallback for users who haven't explicitly toggled yet
+   (respects OS preference, matches the inline anti-flash script) */
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-fg: black;
+        --color-bg: white;
+        --background-image: url("resources/background-light.jpg");
+    }
+}
+
+/* Explicit theme, set via data-theme on <html> by theme.js — always wins */
+:root[data-theme="dark"] {
+    --color-fg: white;
+    --color-bg: black;
+    --background-image: url("resources/background.jpg");
+}
+
+:root[data-theme="light"] {
+    --color-fg: black;
+    --color-bg: white;
+    --background-image: url("resources/background-light.jpg");
+}
+
 body {
     position: relative;
     height: 100vh;
-    color: white;
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    overflow: hidden;
 
-    /* TODO: temp, remove */
-    background: url("resources/background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: var(--background-image) no-repeat center center fixed;
     background-size: cover;
 }
 
+html {
+    overflow: hidden;
+}
+
+/* Header with date, time and clock */
 header {
     position: absolute;
     right: 0;
     top: 2rem;
     display: flex;
     align-items: center;
-    padding-block: 0.25rem;
+    padding-block: 0.5rem;
     padding-right: min(5rem, 5%);
     padding-left: min(10rem, 10%);
-    border: 2px solid rgb(170, 170, 170);
     border-right: none;
     border-radius: 4px 0 0 4px;
-    text-shadow: white 0px 0px 0.4em;
-    font-size: 1.5rem;
+    text-shadow: var(--color-fg) 0px 0px 0.4em;
+    font-size: clamp(0.85rem, 1.5vw, 1.5rem);
+    box-shadow: inset 0 0 0.25em var(--color-fg);
+    transform: translateX(4px);
 }
 
 .clock {
     height: 1em;
     aspect-ratio: 1;
     margin-left: 0.5em;
-    border: 0.2rem solid white;
+    border: 0.15rem solid var(--color-fg);
     border-radius: 50%;
     position: relative;
+    box-shadow:
+        0 0 0.2em var(--color-fg),
+        inset 0 0 0.2em var(--color-fg);
 
-    /* Hour hand */
     &::after {
         content: "";
-        width: 12%;
+        width: 10%;
         height: 35%;
-        background-color: white;
-
+        background-color: var(--color-fg);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -49,13 +83,11 @@ header {
         transform-origin: bottom;
     }
 
-    /* Minute hand */
     &::before {
         content: "";
-        width: 12%;
+        width: 10%;
         height: 55%;
-        background-color: white;
-
+        background-color: var(--color-fg);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -63,12 +95,11 @@ header {
         transform-origin: bottom;
     }
 
-    /* center pivot */
     & .clock-center {
-        width: 12%;
+        width: 10%;
         aspect-ratio: 1;
         border-radius: 50%;
-        background-color: white;
+        background-color: var(--color-fg);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -76,11 +107,124 @@ header {
     }
 }
 
-/* Header with date, time and clock */
-@media (max-width: 600px) {
-    header {
-        display: none;
+/* XMB */
+main {
+    position: absolute;
+    padding: clamp(12px, 2vw, 32px);
+    top: 30%;
+    left: 20%;
+    width: 80%;
+}
+
+.xmb {
+    display: flex;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: clamp(1rem, 5vw, 6rem);
+
+    li {
+        list-style: none;
     }
 }
 
+.category {
+    flex: 0 0 var(--child-w);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: clamp(12px, 2vw, 32px);
+    position: relative;
+
+    .category-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+
+        .iconify {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: clamp(48px, 8vw, 120px);
+            color: var(--color-fg);
+            opacity: 0.6;
+        }
+
+        .text {
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            font-size: clamp(0.75rem, 1.2vw, 1.25rem);
+        }
+    }
+
+    .items {
+        position: absolute;
+        top: 120%;
+        left: 0;
+        opacity: 0;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .item {
+            display: flex;
+            font-size: clamp(1rem, 1.6vw, 1.75rem);
+            align-items: center;
+            gap: 1.5em;
+            white-space: nowrap;
+            margin-bottom: clamp(1.5rem, 2vw, 2.5rem);
+            transition: text-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+            .iconify,
+            img {
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                font-size: clamp(48px, 8vw, 120px);
+                width: clamp(48px, 8vw, 120px);
+                aspect-ratio: 1;
+                opacity: 0.6;
+            }
+
+            img {
+                border: 4px solid var(--color-fg);
+                border-radius: 8px;
+            }
+
+            &.selected {
+                text-shadow: 0 0 0.4em var(--color-fg);
+                animation: textShadowBreathe 2s ease-in-out infinite;
+
+                .iconify,
+                img {
+                    transform: scale(1.3);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &.selected {
+        .category-icon {
+            .iconify {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+
+            .text {
+                opacity: 1;
+            }
+        }
+
+        .items {
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes textShadowBreathe {
+    0% {
+        text-shadow: 0 0 0.2em color-mix(in srgb, var(--color-fg) 60%, transparent);
+    }
+
+    50% {
+        text-shadow: 0 0 0.4em var(--color-fg);
+    }
+
+    100% {
+        text-shadow: 0 0 0.2em color-mix(in srgb, var(--color-fg) 60%, transparent);
+    }
 }

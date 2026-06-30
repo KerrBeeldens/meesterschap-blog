@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leerdoel - JavaScript</title>
+
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Leerdoel</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-06-30">30 Juni 2026</time>
+
+                <h1>JavaScript</h1>
+
+                <section class="introduction">
+                    Ik wil tijdens de minor leren hoe ik JavaScript op een professionele en onderbouwde manier inzet
+                    binnen webdesign, in plaats van puur functioneel "werkende code" te schrijven. Hoewel ik als
+                    programmeur al vaardig ben, wil ik leren welke keuzes in een UX-context gemaakt worden: wanneer
+                    JavaScript wel of niet de juiste oplossing is, hoe je het inzet zonder de toegankelijkheid en
+                    performance van een website te schaden, en hoe je tot leesbare, onderhoudbare code komt die
+                    aansluit bij de rest van het team.
+
+                    <p>
+                        Om dit te bereiken wil ik tijdens het project bewust stilstaan bij mijn JavaScript-keuzes:
+                        ik vraag actief feedback aan groepsgenoten of docenten over de leesbaarheid en onderbouwing
+                        van mijn code, en ik documenteer en licht toe welke afwegingen ik heb gemaakt.
+                    </p>
+
+                    <p class="author">Geschreven door <a href="https://github.com/KerrBeeldens">Kerr</a></p>
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Reflectie op leerdoel</h2>
+
+                    <p>
+                        Dit leerdoel is erbij gekomen na het tweede reflectiegesprek. Tijdens dit gesprek had ik
+                        oorspronkelijk een ander leerdoel met betrekking tot UX, maar na overleg met Jad heb ik dit
+                        leerdoel veranderd. Ik had namelijk al een leerdoel over UX en ik wil mijn vaardigheden als
+                        programmeur graag uitbreiden. Ik kan namelijk al best aardig programmeren, maar wil met dit
+                        leerdoel ervoor zorgen dat ik JavaScript op een slimmere manier leer in te zetten.
+                    </p>
+
+                    <p>
+                        Ik kom zelf van sterk objectgeoriënteerde talen zoals Java, C# en C++ die allemaal ook
+                        statically typed zijn, terwijl JavaScript dynamically typed is en prototype based is, met
+                        veel functionele concepten. Ik hoop met dit leerdoel hier ook wat comfortabeler mee te
+                        worden.
+                    </p>
+
+                    <p>
+                        Tijdens het project heb ik hard mijn best gedaan om dit leerdoel te halen. Ik was tijdens
+                        het project voor een groot gedeelte verantwoordelijk voor de code, maar mijn medestudenten
+                        moesten ook aan het project meeschrijven. Omdat hun competenties als het gaat om JavaScript
+                        lager lagen, was het dus niet alleen van belang dat ik goede code schreef, maar ook ervoor
+                        zorgde dat het begrijpbaar bleef voor mijn groepsgenoten. Ik merkte dat dit tijdens het
+                        project een moeilijke balans was om te vinden.
+                    </p>
+
+                    <p>
+                        In de eerste paar weken van het project was ik vooral bezig met het opzetten van de code
+                        architectuur. Ik heb toen de keuze gemaakt om te werken met classes, iets wat nieuw was voor
+                        mijn groepsgenoten. Ik heb daarom mijn best gedaan om dit zoveel mogelijk aan ze uit te
+                        leggen. Daarnaast gaf Jad ook wat workshops hierover, wat ervoor zorgde dat enkele
+                        groepsgenoten die deze workshops hadden gevolgd hier inmiddels wat meer bekend mee waren.
+                        Verder heb ik ook samen met de groep een JSON-structuur opgezet. Normaal zou ik dit zelf
+                        hebben gedaan, maar voor dit project en ook met oog op mijn leerdoel leek het me van belang
+                        dat iedereen hieraan zou meewerken, zodat iedereen beter zicht had op de werking hiervan.
+                        Dit bleek een goede zet te zijn, want mijn groepsgenoten werkten hier goed aan mee en op
+                        veel plekken zijn hierdoor kleine aanpassingen gemaakt die ik zelf niet had bedacht.
+                    </p>
+
+                    <p>
+                        In de derde week ging het helaas minder goed met dit leerdoel. Op dit punt in het project
+                        ging het vooral om meters maken, dus hebben we binnen de groep ook meer in isolement
+                        gewerkt. Hierdoor heb ik onbewust veel code toegevoegd die voor mijn groepsgenoten te
+                        ingewikkeld was. Dit kwam aan bod tijdens een code review met Cyd, waarbij mijn
+                        groepsgenoten verschillende delen van de code niet goed konden uitleggen.
+                    </p>
+
+                    <p>
+                        Ik heb het hierna op me genomen om ervoor te zorgen dat de ontwerpkeuzes in de code een stuk
+                        transparanter waren. Ik heb in eerste instantie samen met Mila de hele code doorgenomen om
+                        te kijken waar onduidelijkheden zaten. We hebben vervolgens samen comments in de code
+                        geschreven op plaatsen waar de regels code voor haar vaag waren. Vervolgens heb ik op basis
+                        hiervan een <a
+                            href="https://github.com/mwdd-ctrl-city/animation-tool/wiki/Toelichting-code">document
+                            met toelichting van de code</a> geschreven en met de groep doorgenomen. Dit kwam ook mooi
+                        overeen met mijn leerdoel om mijn code en daarbij horende overwegingen beter te
+                        documenteren.
+                    </p>
+
+                    <p>
+                        Uiteindelijk heeft dit alles ook geleid tot verbeteringen in de code. Ten eerste hielpen de
+                        comments bij de leesbaarheid van de code, maar daarnaast kwamen er zo ook wat ontwerpkeuzes
+                        aan het licht. In de code had ik namelijk een data klasse die een getter had. Deze getter
+                        zette de data om naar een object, waarna vervolgens de UI die deze data consumeerde dit
+                        object weer omzette naar een array. Dit leidde tot omslachtige code die ik lastig vond om
+                        uit te leggen en die groepsgenoten lastig vonden om te begrijpen. Hierdoor realiseerde ik me
+                        dat het beter was om een andere datastructuur te gebruiken (een map) en deze in de getter
+                        direct te returnen zonder het om te zetten tot een object. Hierdoor kon binnen de UI de data
+                        ook direct gebruikt worden en werd de code een stuk leesbaarder.
+                    </p>
+
+                    <p>
+                        Ik heb dit in de laatste weken ook voortgezet door mijn code verder te documenteren met
+                        JSDoc en om regelmatig groepsgenoten mee te laten kijken met de code die ik schreef, en
+                        andersom.
+                    </p>
+
+                    <h2>Vooruitblik</h2>
+
+                    <p>
+                        Ik merk dat ik tijdens dit project veel bewuster ben geworden van de keuzes die ik maak bij
+                        het schrijven van JavaScript. Waar ik voorheen vooral keek naar of een oplossing technisch
+                        goed werkte, let ik nu ook meer op de gevolgen voor leesbaarheid, onderhoudbaarheid,
+                        toegankelijkheid en samenwerking binnen een team. Tegelijkertijd zie ik dat ik nog de
+                        neiging heb om snel complexe oplossingen te bedenken, waardoor de code niet altijd direct
+                        begrijpelijk is voor anderen.
+                    </p>
+
+                    <p>
+                        Bij een volgend project wil ik daarom nog eerder feedback vragen op mijn code, in plaats van
+                        pas wanneer er tijdens een code review onduidelijkheden naar voren komen. Ook wil ik
+                        ontwerpkeuzes vanaf het begin beter documenteren, zodat de afwegingen achter de implementatie
+                        voor iedereen duidelijk zijn. Daarnaast wil ik mij verder verdiepen in moderne
+                        JavaScript-patronen en best practices, zodat ik beter kan onderbouwen waarom ik voor een
+                        bepaalde oplossing kies en wanneer een eenvoudigere aanpak juist de voorkeur heeft.
+                    </p>
+
+                    <p>
+                        Mijn uiteindelijke doel is om niet alleen code te schrijven die goed functioneert, maar ook
+                        code die voor anderen prettig is om te lezen, eenvoudig te onderhouden is en aansluit bij de
+                        werkwijze van een professioneel developmentteam.
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
+</body>
+
+</html>

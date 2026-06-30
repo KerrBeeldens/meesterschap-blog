@@ -33,6 +33,7 @@
     "@eslint/css": "^0.14.1",
     "@eslint/js": "^9.39.1",
     "@eslint/json": "^0.14.0",
+    "@iconify-json/fluent": "^1.2.52",
     "babel-jest": "^30.2.0",
     "css-loader": "^7.1.2",
     "eslint": "^9.39.1",
