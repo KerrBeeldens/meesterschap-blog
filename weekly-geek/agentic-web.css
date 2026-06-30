@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Arial;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ps3-bg: #111113;
+    --ps3-surface: #191a1d;
+    --ps3-panel: #1e1f23;
+    --ps3-border: #2a2b30;
+    --ps3-border-strong: #38393f;
+    --ps3-cross: #4b9fe8;
+    --ps3-circle: #e84b4b;
+    --ps3-triangle: #4be8b0;
+    --ps3-square: #e84bb0;
+    --ps3-text: #c8ccd8;
+    --ps3-muted: #5a5e6e;
+    --ps3-bar-bg: #151618;
+    --ps3-heading: #fff;
+    --ps3-heading-secondary: #aab;
+    --ps3-nav-logo: #888;
+    --ps3-publication-text: #888;
+    --ps3-blockquote-bg: rgba(255, 255, 255, 0.03);
+    --ps3-blockquote-text: #b0bcd0;
+    --ps3-strong-text: #d8dcee;
+    --ps3-bullet: #fff;
+    --ps3-introduction-text: #b8bece;
+    --ps3-link-underline: rgba(75, 159, 232, 0.3);
+    --ps3-code-bg: rgba(75, 232, 176, 0.08);
+    --ps3-code-border: rgba(75, 232, 176, 0.15);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --ps3-bg: #f3f4f6;
+        --ps3-surface: #ffffff;
+        --ps3-panel: #f0f1f4;
+        --ps3-border: #dde0e6;
+        --ps3-border-strong: #c7cbd4;
+        --ps3-cross: #2f7dc0;
+        --ps3-circle: #c0392b;
+        --ps3-triangle: #1c8c63;
+        --ps3-square: #c0398a;
+        --ps3-text: #2b2d36;
+        --ps3-muted: #767a88;
+        --ps3-bar-bg: #ffffff;
+        --ps3-heading: #0d0e11;
+        --ps3-heading-secondary: #454a5c;
+        --ps3-nav-logo: #6b6f7c;
+        --ps3-publication-text: #6b6f7c;
+        --ps3-blockquote-bg: rgba(0, 0, 0, 0.025);
+        --ps3-blockquote-text: #3c4250;
+        --ps3-strong-text: #1a1b20;
+        --ps3-bullet: #2b2d36;
+        --ps3-introduction-text: #43485a;
+        --ps3-link-underline: rgba(47, 125, 192, 0.35);
+        --ps3-code-bg: rgba(28, 140, 99, 0.08);
+        --ps3-code-border: rgba(28, 140, 99, 0.2);
+    }
+}
+
+html[data-theme="light"] {
+    --ps3-bg: #f3f4f6;
+    --ps3-surface: #ffffff;
+    --ps3-panel: #f0f1f4;
+    --ps3-border: #dde0e6;
+    --ps3-border-strong: #c7cbd4;
+    --ps3-cross: #2f7dc0;
+    --ps3-circle: #c0392b;
+    --ps3-triangle: #1c8c63;
+    --ps3-square: #c0398a;
+    --ps3-text: #2b2d36;
+    --ps3-muted: #767a88;
+    --ps3-bar-bg: #ffffff;
+    --ps3-heading: #0d0e11;
+    --ps3-heading-secondary: #454a5c;
+    --ps3-nav-logo: #6b6f7c;
+    --ps3-publication-text: #6b6f7c;
+    --ps3-blockquote-bg: rgba(0, 0, 0, 0.025);
+    --ps3-blockquote-text: #3c4250;
+    --ps3-strong-text: #1a1b20;
+    --ps3-bullet: #2b2d36;
+    --ps3-introduction-text: #43485a;
+    --ps3-link-underline: rgba(47, 125, 192, 0.35);
+    --ps3-code-bg: rgba(28, 140, 99, 0.08);
+    --ps3-code-border: rgba(28, 140, 99, 0.2);
+}
+
+html[data-theme="dark"] {
+    --ps3-bg: #111113;
+    --ps3-surface: #191a1d;
+    --ps3-panel: #1e1f23;
+    --ps3-border: #2a2b30;
+    --ps3-border-strong: #38393f;
+    --ps3-cross: #4b9fe8;
+    --ps3-circle: #e84b4b;
+    --ps3-triangle: #4be8b0;
+    --ps3-square: #e84bb0;
+    --ps3-text: #c8ccd8;
+    --ps3-muted: #5a5e6e;
+    --ps3-bar-bg: #151618;
+    --ps3-heading: #fff;
+    --ps3-heading-secondary: #aab;
+    --ps3-nav-logo: #888;
+    --ps3-publication-text: #888;
+    --ps3-blockquote-bg: rgba(255, 255, 255, 0.03);
+    --ps3-blockquote-text: #b0bcd0;
+    --ps3-strong-text: #d8dcee;
+    --ps3-bullet: #fff;
+    --ps3-introduction-text: #b8bece;
+    --ps3-link-underline: rgba(75, 159, 232, 0.3);
+    --ps3-code-bg: rgba(75, 232, 176, 0.08);
+    --ps3-code-border: rgba(75, 232, 176, 0.15);
+}
+
+body {
+    background: var(--ps3-bg);
+    color: var(--ps3-text);
+    font-family: arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Navigation bar ── */
+
+.nav-bar {
+    background: var(--ps3-bar-bg);
+    border-bottom: 1px solid var(--ps3-border);
+    padding: 10px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--ps3-nav-logo);
+    text-transform: uppercase;
+}
+
+.nav-hints {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    color: var(--ps3-muted);
+}
+
+.hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-link {
+    display: flex;
+    gap: 0.5em;
+    text-decoration: none;
+}
+
+.btn-symbol {
+    border-radius: 50%;
+    border: 1.5px solid var(--ps3-circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.circle {
+    color: var(--ps3-circle);
+    border: 2px solid var(--ps3-circle);
+    width: 60%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+}
+
+.btn-circle {
+    color: var(--ps3-circle);
+}
+
+/* ── Theme toggle ── */
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--ps3-border-strong);
+    background: var(--ps3-panel);
+    color: var(--ps3-text);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--ps3-cross);
+    color: var(--ps3-cross);
+}
+
+/* ── Layout ── */
+
+main {
+    flex: 1;
+}
+
+.wrapper {
+    max-width: 760px;
+    margin-inline: auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* ── Article elements ── */
+
+.publication-date {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--ps3-publication-text);
+    background: var(--ps3-panel);
+    border: 1px solid var(--ps3-border);
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.publication-date::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--ps3-border-strong);
+    border-radius: 2px 0 0 2px;
+}
+
+h1 {
+    font-size: 2.4rem;
+    color: var(--ps3-heading);
+    margin-bottom: 0.25rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: var(--ps3-heading-secondary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    color: var(--ps3-text);
+}
+
+.introduction {
+    background: var(--ps3-panel);
+    border: 1px solid var(--ps3-border);
+    border-left: 3px solid var(--ps3-border-strong);
+    border-radius: 4px;
+    padding: 1.5rem;
+    line-height: 1.7;
+    color: var(--ps3-introduction-text);
+    margin-bottom: 1.5rem;
+    margin-top: 1.25rem;
+}
+
+.author {
+    font-size: 0.8rem;
+    font-style: normal;
+    color: var(--ps3-muted);
+    margin-top: 1rem;
+}
+
+.author a {
+    color: var(--ps3-cross);
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--ps3-border);
+    margin: 2rem 0;
+}
+
+.body {
+    background: var(--ps3-surface);
+    border: 1px solid var(--ps3-border);
+    border-radius: 6px;
+    padding: 2rem;
+}
+
+/* ── Blockquote ── */
+
+.blockquote {
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.5rem 1.25rem 2.5rem;
+    background: var(--ps3-blockquote-bg);
+    border: 1px solid var(--ps3-border);
+    border-left: 3px solid var(--ps3-triangle);
+    border-radius: 4px;
+    font-style: italic;
+    color: var(--ps3-blockquote-text);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    position: relative;
+}
+
+.blockquote::before {
+    content: '\201C';
+    color: var(--ps3-triangle);
+    font-size: 3.5rem;
+    position: absolute;
+    left: 8px;
+    top: -8px;
+    font-style: normal;
+    opacity: 0.5;
+    line-height: 1;
+    font-family: Georgia, serif;
+}
+
+.blockquote span {
+    display: block;
+    font-weight: bold;
+    font-style: normal;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--ps3-triangle);
+}
+
+/* ── Lists ── */
+
+ul {
+    margin-bottom: 1.25rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+}
+
+li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ps3-bullet);
+}
+
+/* ── Inline elements ── */
+
+strong {
+    font-weight: bold;
+    color: var(--ps3-strong-text);
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    color: var(--ps3-triangle);
+    background: var(--ps3-code-bg);
+    border: 1px solid var(--ps3-code-border);
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+a {
+    color: var(--ps3-cross);
+    text-decoration: none;
+}
+
+/* ── Footer bar ── */
+
+.footer-bar {
+    background: var(--ps3-bar-bg);
+    border-top: 1px solid var(--ps3-border);
+    padding: 10px 2rem;
+}
+
+/*# sourceMappingURL=agentic-web.css.map*/
