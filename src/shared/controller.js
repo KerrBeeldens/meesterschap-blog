@@ -1,6 +1,8 @@
-// controller.js
+const BUTTONS = {
+    CROSS: 0,
+    CIRCLE: 1
+};
 
-const BACK_BUTTON = 1; // Circle (PS) / B (Xbox)
 const DEADZONE = 0.3;
 const SCROLL_SPEED = 12;
 
@@ -19,12 +21,17 @@ function gamepadLoop() {
     const gamepad = navigator.getGamepads()[0];
 
     if (gamepad) {
-        // Circle / B -> Back
-        if (justPressed(gamepad, BACK_BUTTON)) {
+        // Circle / B -> Back (if present)
+        if (justPressed(gamepad, BUTTONS.CIRCLE)) {
             document.querySelector(".back-link")?.click();
         }
 
-        // Left stick vertical scrolling
+        // Cross / A -> Open project (if present)
+        if (justPressed(gamepad, BUTTONS.CROSS)) {
+            document.querySelector(".project-link")?.click();
+        }
+
+        // Left stick scrolling
         const y = gamepad.axes[1];
 
         if (Math.abs(y) > DEADZONE) {
@@ -37,9 +44,5 @@ function gamepadLoop() {
 
     requestAnimationFrame(gamepadLoop);
 }
-
-window.addEventListener("gamepadconnected", (e) => {
-    console.log("Gamepad connected:", e.gamepad.id);
-});
 
 requestAnimationFrame(gamepadLoop);

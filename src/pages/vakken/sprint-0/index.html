@@ -4,11 +4,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Technologies</title>
+    <title>Vakken - Sprint 0</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
 </head>
 
 <body>
-    <h1>Browser Technologies</h1>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Vakken</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-06-30">12 februari 2026</time>
+
+                <h1>Sprint 0</h1>
+
+                <a href="https://github.com/KerrBeeldens/Kerrminal" class="project-link">Bekijk project</a>
+
+                <section class="introduction">
+                    Het doel van dit eerste project van de minor was om een website te bouwen die mijzelf
+                    voorstelde en om mijn startcompetenties te overstijgen. Ik heb hiervoor een nep
+                    desktopomgeving gemaakt met hierop een terminal die mij voorstelt, oftewel een Kerrminal.
+
+                    <p class="author">Geschreven door <a href="https://github.com/KerrBeeldens">Kerr</a></p>
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Resultaat</h2>
+
+                    <p>
+                        Kerrminal is een website met de look-and-feel van een retro desktopomgeving, inclusief een
+                        werkende terminalapplicatie. De naam is een samentrekking van mijn naam (Kerr) en het woord
+                        terminal.
+                    </p>
+
+                    <p>
+                        Mijn oorspronkelijke idee was een text-based adventure game, maar al snel besloot ik om er
+                        een interactieve terminal binnen een nep-desktopomgeving van te maken. Dat paste beter bij
+                        de eisen én was leuker om te bouwen. Het stelde me in staat om klein te beginnen en
+                        iteratief uit te breiden.
+                    </p>
+
+                    <h2>De terminal</h2>
+
+                    <p>
+                        De kern van de website is een terminal waarin de gebruiker commando's kan invoeren om
+                        informatie over mij op te vragen.
+                    </p>
+
+                    <p>
+                        Ik heb verschillende commando's gebouwd: <code>whoami</code> navigeert naar een submenu met
+                        persoonlijke informatie, <code>theme</code> opent het thema-menu en <code>reset</code> zet
+                        de terminal terug naar de beginstaat.
+                    </p>
+
+                    <p>
+                        Via het <code>whoami</code>-menu kunnen mijn leerdoelen worden opgevraagd met het
+                        <code>goal</code>-commando. Met <code>whois</code> is het mogelijk om via de API gegevens
+                        van een medestudent op te halen.
+                    </p>
+
+                    <p>
+                        In het <code>theme</code>-menu heb ik de mogelijkheid gebouwd om de tekstkleur en
+                        vensterkleur van de terminal aan te passen en om een andere achtergrond ("wallpaper") in te
+                        stellen. De wallpapers zijn persoonlijke foto's van mij, zodat de website een persoonlijk
+                        tintje krijgt.
+                    </p>
+
+                    <h2>Login en desktopomgeving</h2>
+
+                    <p>
+                        Om de desktopervaring completer te maken heb ik een loginscherm toegevoegd. Medestudenten
+                        kunnen inloggen met hun student-ID, waarna ik via de API hun naam en profielfoto ophaal en
+                        toon in een laadscherm. Daarna komen ze terecht in de desktopomgeving.
+                    </p>
+
+                    <h2>Settings-applicatie</h2>
+
+                    <p>
+                        Naast de terminal heb ik een tweede "applicatie" gebouwd: een settings-venster waarmee de
+                        gebruiker kan wisselen tussen verschillende thema's. Elk thema stelt een persoonlijke foto
+                        van mij in als achtergrond, gekoppeld aan een van de <code>whoami</code>-categorieën. Ik
+                        heb een stuk of tien thema's gemaakt, waaronder een standaard licht en donker thema. De
+                        settings-app gaf de desktopomgeving ook meteen wat meer diepte, doordat er nu twee
+                        applicaties naast elkaar konden draaien.
+                    </p>
+
+                    <h2>Wat ik heb geleerd</h2>
+
+                    <p>
+                        Mijn belangrijkste leerdoel was om minder perfectionistisch te zijn en frequenter iets
+                        werkends op te leveren. Ik heb mezelf uitgedaagd om klein te beginnen en van daaruit stap
+                        voor stap uit te breiden, in plaats van één groot ambitieus doel na te streven. Dat is me
+                        goed gelukt.
+                    </p>
+
+                    <p>
+                        Iets anders dat ik heb geleerd is werken met CSS-animaties en transitions. Ik had daar
+                        voorafgaand aan dit project nog nooit mee gewerkt. Ik heb geleerd hoe ik transitions
+                        toepas en hoe ik scroll-driven animaties opzet.
+                    </p>
+
+                    <p>
+                        Om de wallpaper dynamisch te wisselen heb ik voor het eerst CSS-properties rechtstreeks
+                        vanuit JavaScript gemanipuleerd. Dit opende voor mij nieuwe mogelijkheden voor interactieve
+                        stijling.
+                    </p>
+
+                    <p>
+                        Ik heb ook geleerd hoe ik meerdere thema's kan inladen in een website en hoe ik op basis
+                        van de voorkeur van de gebruiker automatisch het juiste thema activeer.
+                    </p>
+
+                    <p>
+                        Als laatste moest de ASCII-art in de terminal op verschillende schermformaten goed werken.
+                        Ik heb geleerd hoe ik dit met media queries dynamisch en netjes kon oplossen.
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
 </body>
 
 </html>

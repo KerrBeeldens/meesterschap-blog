@@ -4,11 +4,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Technologies</title>
+    <title>Vakken - CSS to the Rescue</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
 </head>
 
 <body>
-    <h1>Browser Technologies</h1>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Vakken</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-06-30">19 maar 2026</time>
+
+                <h1>CSS to the Rescue</h1>
+
+                <a href="https://github.com/KerrBeeldens/SolveItNow" class="project-link">Bekijk project</a>
+
+                <section class="introduction">
+                    Bij dit vak was de uitdaging om een interactieve website te bouwen met uitsluitend HTML en CSS.
+                    Zonder JavaScript, en zonder gebruik te maken van klassen of ID's, tenzij strikt noodzakelijk
+                    voor het koppelen van een label aan een input. De nadruk lag daarmee volledig op het creatief
+                    inzetten van CSS als interactietaal, iets waar ik me tijdens dit project echt in heb moeten
+                    verdiepen.
+
+                    <p class="author">Geschreven door <a href="https://github.com/KerrBeeldens">Kerr</a></p>
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Resultaat</h2>
+
+                    <p>
+                        Ik heb een interactieve tutorial gemaakt waarmee gebruikers stap voor stap leren hoe ze een
+                        Rubik's Cube kunnen oplossen: <em>Solve It NOW!</em>. Het project was allesbehalve een
+                        rechte lijn van idee naar eindproduct. Ik heb in totaal drie repositories, omdat ik
+                        halverwege het project opnieuw ben begonnen met de kennis die ik tot dan toe had opgedaan.
+                        Dat was een moeilijke maar goede beslissing.
+                    </p>
+
+                    <h2>Eerste pogingen</h2>
+
+                    <p>
+                        Voordat ik aan de echte interface begon, heb ik uitgebreid geëxperimenteerd in een apart
+                        side project. Ik wilde begrijpen hoe ik een 3D Rubik's Cube kon bouwen en laten draaien
+                        met puur CSS. De kubus bestaat uit 27 <code>div</code>-elementen met een slimme structuur:
+                        een buitenste wrapper, daarbinnen een <code>div</code> per blokje met inline custom
+                        properties voor de positie, en daarbinnen zes <code>div</code>s voor de zes zijden.
+                    </p>
+
+                    <p>
+                        De rotatie werkte via radio buttons die onzichtbaar zijn gemaakt, waarbij het label als
+                        knop diende. Door te kijken welke checkbox <code>required</code> was en aangevinkt, paste
+                        ik via CSS-selectoren de juiste rotatie toe op de juiste blokjes. De selectors werden al
+                        snel complex, maar het werkte.
+                    </p>
+
+                    <p>
+                        Het echte probleem was de schaal. Een Rubik's Cube oplossen kost zo'n 120 moves over 27
+                        blokjes, en voor elke move moest ik per blokje bepalen of het meedraaide, over welke as,
+                        en in welke richting. Dat met de hand uitwerken was nagenoeg onmogelijk.
+                    </p>
+
+                    <h2>CSS genereren met Java</h2>
+
+                    <p>
+                        Om dit probleem op te lossen, bouwde ik een apart hulpprogramma in Java. Dit programma
+                        leest een bestand met moves in, simuleert de kubus intern per blokje, houdt de positie en
+                        lokale rotatie bij na elke stap, en genereert vervolgens automatisch de benodigde HTML en
+                        CSS. Zo hoefde ik de complexe transformaties niet met de hand uit te rekenen, maar kon ik
+                        me richten op de structuur en logica van het hoofdproject.
+                    </p>
+
+                    <h2>Het project zelf</h2>
+
+                    <p>
+                        Terwijl ik experimenteerde in het side project en het hulpprogramma bouwde, werkte ik
+                        parallel aan de eigenlijke interface. Ik begon met een ruwe level select en een basis voor
+                        het level scherm, maar was daar niet tevreden over. In het weekend heb ik dit omgezet in
+                        een definitieve versie.
+                    </p>
+
+                    <p>
+                        Het titelscherm bestaat uit kubussen die voor elke letter van de titel om hun as draaien.
+                        Eén voor één stoppen ze met draaien, totdat <em>SOLVE IT NOW</em> volledig zichtbaar is.
+                        Naast de titel ziet de gebruiker een kubus waarop de beschikbare levels verschijnen. Als
+                        een level wordt gehaald, lost de kubus zich voor een deel op en wordt het volgende level
+                        zichtbaar, totdat alle levels zijn gehaald en de kubus volledig is opgelost.
+                    </p>
+
+                    <p>
+                        In het level scherm zelf krijgt de gebruiker een korte uitleg via een carousel, waarna hij
+                        de juiste moves moet uitvoeren. De kubus kan vrij worden rondgedraaid via knoppen onderin.
+                        Zodra alle stappen van een level zijn doorlopen, keert de gebruiker terug naar het
+                        hoofdscherm met een afsluitende animatie.
+                    </p>
+
+                    <h2>Wat ik heb geleerd</h2>
+
+                    <p>
+                        Dit project was het moeilijkste van de minor. Ik heb meerdere keren een doodlopende weg
+                        gevonden, opnieuw moeten beginnen en keuzes moeten maken over wat wel en niet haalbaar was
+                        binnen de tijd. Maar juist daardoor heb ik hier veel van geleerd.
+                    </p>
+
+                    <p>
+                        Het meest waardevolle inzicht was hoe ver je CSS als interactietaal kunt rekken. Door radio
+                        buttons en checkboxes te combineren met geavanceerde selectors zoals <code>:has()</code>,
+                        <code>~</code> en <code>:not()</code>, bouwde ik een soort state machine die de toestand
+                        van het programma bijhield. Dat is een manier van denken die ik voor dit project nooit had
+                        overwogen.
+                    </p>
+
+                    <p>
+                        Tegelijkertijd leerde ik de waarde van het bouwen van hulpmiddelen. Het idee om een
+                        Java-programma te schrijven om CSS en HTML te genereren voelde in het begin misschien
+                        omslachtig, maar het bespaarde me enorm veel tijd en fouten.
+                    </p>
+
+                    <p>
+                        Verder heb ik tijdens dit project voor het eerst gewerkt met <code>subgrid</code>,
+                        <code>CSS if()</code>, <code>oklch</code> als kleurruimte en SVG's inline in CSS via
+                        <code>background-image</code>. Elk van die technieken had zijn eigen leercurve, maar samen
+                        gaven ze me het gevoel dat ik CSS nu op een heel ander niveau begrijp dan aan het begin van
+                        de minor.
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
 </body>
 
 </html>

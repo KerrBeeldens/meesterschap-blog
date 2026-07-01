@@ -106,14 +106,32 @@ function render() {
     const categoryGap = parseFloat(getComputedStyle(categories.children[offsetX]).gap);
     const categoryItemHeight = categories.children[offsetX].querySelector(".category-icon").offsetHeight + categoryGap;
 
-    Array.from(currentItems.children).forEach((element, i) => {
-        const distance = i - activeIndex;
+    // Items
+    items.forEach((list, categoryIndex) => {
+        const activeIndex = offsetY[categoryIndex];
 
-        if (distance >= 0) {
-            element.style.transform = `translateY(${-activeIndex * itemHeight}px)`;
-        } else {
-            element.style.transform = `translateY(calc(${-activeIndex * itemHeight}px - ${categoryItemHeight}px - ${itemMargin}px))`;
-        }
+        const firstItem = list.children[0];
+        if (!firstItem) return;
+
+        const itemMargin = parseFloat(getComputedStyle(firstItem).marginBottom);
+        const itemHeight = firstItem.offsetHeight + itemMargin;
+
+        const categoryGap = parseFloat(getComputedStyle(categories.children[categoryIndex]).gap);
+        const categoryItemHeight =
+            categories.children[categoryIndex]
+                .querySelector(".category-icon")
+                .offsetHeight + categoryGap;
+
+        Array.from(list.children).forEach((element, i) => {
+            const distance = i - activeIndex;
+
+            if (distance >= 0) {
+                element.style.transform = `translateY(${-activeIndex * itemHeight}px)`;
+            } else {
+                element.style.transform =
+                    `translateY(calc(${-activeIndex * itemHeight}px - ${categoryItemHeight}px - ${itemMargin}px))`;
+            }
+        });
     });
 
     // Highlight selected category
@@ -121,11 +139,11 @@ function render() {
     categories.children[offsetX].classList.add("selected");
 
     // Highlight selected item
-    const itemCount = currentItems.children.length;
-    offsetY[offsetX] = Math.min(Math.max(offsetY[offsetX], 0), itemCount - 1);
-    Array.from(currentItems.children).forEach(el => el.classList.remove("selected"));
-    const activeItem = currentItems.children[offsetY[offsetX]];
-    activeItem.classList.add("selected");
+    items.forEach(list =>
+        Array.from(list.children).forEach(el => el.classList.remove("selected"))
+    );
+
+    items[offsetX].children[offsetY[offsetX]].classList.add("selected");
 }
 
 function moveX(delta) {
@@ -279,7 +297,7 @@ function openArticle() {
         return;
     }
 
-    const url = `/meesterschap-blog/${toKebabCase(categoryName)}/${toKebabCase(itemName)}`;
+    const url = `/${toKebabCase(categoryName)}/${toKebabCase(itemName)}`;
 
     window.location.href = url;
 }

@@ -4,11 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Technologies</title>
+    <title>Vakken - Browser Technologies</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
 </head>
 
 <body>
-    <h1>Browser Technologies</h1>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Vakken</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-06-30">19 maart 2026</time>
+
+                <h1>Browser Technologies</h1>
+
+                <a href="https://github.com/KerrBeeldens/TartarosCentraal" class="project-link">Bekijk project</a>
+
+                <section class="introduction">
+                    Bij dit vak stond progressive enhancement centraal: het bouwen van een webformulier dat op elk
+                    apparaat en in elke browser werkt, ongeacht de beschikbare technieken. Het concrete onderwerp
+                    was een (fictief) erfbelastingformulier op basis van de huisstijl van de NS. De uitdaging zat
+                    niet alleen in de techniek, maar ook in de UX: hoe maak je een complex, meerlagig formulier
+                    toegankelijk en prettig om in te vullen?
+
+                    <p class="author">Geschreven door <a href="https://github.com/KerrBeeldens">Kerr</a></p>
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Resultaat</h2>
+
+                    <p>
+                        Het resultaat is een meerstappenformulier waarmee een gebruiker stap voor stap fictieve
+                        erfbelasting over 2025 kan invoeren, opgebouwd in de herkenbare stijl van de NS.
+                    </p>
+
+                    <h2>Opbouw van de form</h2>
+
+                    <p>
+                        Aan het begin wordt de gebruiker verwelkomd door een intropagina met uitleg over het doel
+                        van het formulier, de opbouw en een schatting van de invultijd. Aan het einde volgt een
+                        eenvoudig bedankscherm met informatie over de vervolgstappen.
+                    </p>
+
+                    <p>
+                        Het formulier is opgesplitst in meerdere pagina's, zodat de gebruiker nooit overweldigd
+                        wordt door alle velden tegelijk. Op elk moment is via een progressbar bovenaan de pagina te
+                        zien hoe ver de gebruiker is. Die progressbar heb ik vormgegeven als een trein. Blauwe
+                        vakken geven de voltooide stappen aan, doorzichtige vakken de stappen die nog komen.
+                    </p>
+
+                    <h2>Progressive disclosure</h2>
+
+                    <p>
+                        Een belangrijk onderdeel van de UX is progressive disclosure: velden die alleen relevant
+                        zijn voor bepaalde antwoorden worden pas getoond zodra de gebruiker die keuze maakt. Zo
+                        ziet de gebruiker altijd alleen wat op dat moment van toepassing is.
+                    </p>
+
+                    <p>
+                        Dit heb ik volledig in CSS opgelost met de <code>:has()</code>-selector, zonder JavaScript.
+                        Als de gebruiker "ja" kiest, worden de bijbehorende velden zichtbaar. Later heb ik hier ook
+                        een vloeiende animatie aan toegevoegd, waardoor het verschijnen van nieuwe velden
+                        natuurlijker aanvoelt.
+                    </p>
+
+                    <h2>Validatie en toegankelijkheid</h2>
+
+                    <p>
+                        Elk invoerveld wordt gevalideerd zodra de gebruiker het verlaat. Is een veld nog niet
+                        correct ingevuld, dan kleurt het rood en verschijnt er een duidelijke foutmelding. Vult de
+                        gebruiker het goed in, dan wordt het veld groen. Op de laatste pagina wordt alles nogmaals
+                        gecontroleerd voordat het formulier wordt verstuurd.
+                    </p>
+
+                    <p>
+                        Voor de toegankelijkheid heb ik gebruik gemaakt van <code>aria-live="polite"</code> om
+                        foutmeldingen aan te kondigen voor schermlezers, en heb ik zorggedragen voor correcte
+                        <code>fieldset</code>- en <code>legend</code>-structuur door het hele formulier heen.
+                    </p>
+
+                    <h2>Data bewaren en view transitions</h2>
+
+                    <p>
+                        Om de gebruikerservaring verder te verbeteren sla ik de ingevulde data op in de lokale
+                        opslag van de browser. De gebruiker kan het formulier dus halverwege afsluiten en later
+                        verdergaan. Bij het versturen wordt de opgeslagen data automatisch gewist.
+                    </p>
+
+                    <p>
+                        Als laatste toevoeging heb ik view transitions geïmplementeerd tussen de pagina's, zodat
+                        het navigeren door het formulier soepel aanvoelt. Het kostte me meerdere pogingen om dit
+                        goed te krijgen, met name het omdraaien van de animatierichting bij terugnavigeren was
+                        lastig. Uiteindelijk is het gelukt door een custom property te gebruiken die per pagina de
+                        richting bepaalt.
+                    </p>
+
+                    <h2>Wat ik heb geleerd</h2>
+
+                    <p>
+                        Dit project leerde mij op de eerste plaats dat CSS veel meer kan dan ik dacht. Waar ik
+                        eerder vrijwel automatisch naar JavaScript zou grijpen voor interactie zoals het tonen en
+                        verbergen van velden, realiseerde ik me hier dat <code>:has()</code> dat volledig overbodig
+                        maakt. Dat inzicht had ik al een beetje bij CSS to the Rescue, maar bij dit project werd
+                        het echt concreet.
+                    </p>
+
+                    <p>
+                        Daarnaast heb ik voor het eerst echt serieus nagedacht over toegankelijkheid bij
+                        formulieren. Elementen als <code>fieldset</code>, <code>legend</code> en
+                        <code>aria-live</code> had ik eerder wel eens gezien, maar nooit bewust toegepast. Hier
+                        merkte ik hoe groot het verschil is tussen een formulier dat er goed uitziet en een
+                        formulier dat ook goed werkt voor iedereen.
+                    </p>
+
+                    <p>
+                        Tot slot heeft het thema van dit vak, namelijk progressive disclosure, me ook veel geleerd.
+                        Het idee is dat het formulier moet blijven werken ook als CSS en JavaScript niet werken. Dit
+                        zorgt voor een bepaalde gelaagdheid van het project: het moet werken in HTML, het kan wat
+                        mooier gemaakt worden in CSS en de kleine details kunnen door JavaScript opgelost worden. In
+                        andere projecten zal dit waarschijnlijk niet zo strikt hoeven, maar ik neem wel het idee
+                        van de "rule of least power" mee. Als iets met HTML en CSS kan, is het beter om die talen
+                        te gebruiken dan om alles op te lossen met JavaScript, een taal die een stuk fragieler is.
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
 </body>
 
 </html>

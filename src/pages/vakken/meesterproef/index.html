@@ -4,11 +4,699 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Technologies</title>
+    <title>Weekverslag - Meesterproef</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
 </head>
 
 <body>
-    <h1>Browser Technologies</h1>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Vakken</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-06-30">26 juni 2026</time>
+
+                <h1>Meesterproef</h1>
+
+                <section class="introduction">
+                    Dit verslag beschrijft vijf weken werk aan een animatietool voor Marjolijn, opgebouwd rondom
+                    GSAP en een eigen datastructuur die animaties opslaat, inlaadt en zelfstandig afspeelt. Het
+                    verslag loopt van de eerste briefing en het onderzoek naar geschikte technieken, via het
+                    opzetten en herstructureren van de code architectuur, tot en met save/load, undo/redo en de
+                    afsluitende expo.
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Week 1: Voorbereiding</h2>
+
+                    <p>
+                        Het eerste gedeelte van week 1 stond vooral in het teken van kennismaken met het
+                        projectteam, afspraken maken over de samenwerking en het voorbereiden en houden van het
+                        eerste gesprek met de opdrachtgever.
+                    </p>
+
+                    <h3>Kennismaken en afspraken opstellen</h3>
+
+                    <p>
+                        Ik was nog niet bekend met de rest van de groep, terwijl de rest elkaar allemaal al kende,
+                        maar de kennismaking binnen de groep verliep soepel. We zijn begonnen met het aanmaken van
+                        een groepsapp en zijn toen begonnen met het opstellen van wat afspraken.
+                    </p>
+
+                    <p>
+                        We hebben iedereen groepsrollen toegewezen, zodat iedereen zijn eigen verantwoordelijkheid
+                        had. De rolverdeling was als volgt vastgesteld:
+                    </p>
+
+                    <ul>
+                        <li>Contactpersoon opdrachtgever: <strong>Senna</strong></li>
+                        <li>Code beheerder: <strong>Sabrina</strong></li>
+                        <li>Overzicht bewaarder: <strong>Jeppe</strong></li>
+                        <li>Notulist: <strong>Senna &amp; Mila</strong></li>
+                        <li>Planner + Wiki beheerder: <strong>Kerr</strong></li>
+                        <li>Design beheerder: <strong>Mila</strong></li>
+                    </ul>
+
+                    <p>
+                        Daarnaast hebben we ook wat code conventions afgesproken. We hebben er hierbij voor gekozen
+                        om deze op dit moment lichtgewicht te laten en eventueel later aan te vullen waar nodig.
+                    </p>
+
+                    <h3>Voorbereiden briefing</h3>
+
+                    <p>
+                        Vervolgens zijn we verder gegaan met het voorbereiden van de briefing met de opdrachtgever.
+                        Ook hier hebben we een rolverdeling voor bedacht. Sabrina en Jeppe zouden de vragen gaan
+                        stellen, Senna zou notuleren en Mila en ik zouden het gesprek observeren en extra vragen en
+                        vervolgvragen ter plekke bedenken en stellen.
+                    </p>
+
+                    <p>
+                        Het doel van deze verdeling was dat Sabrina en Jeppe zich volledig konden richten op het
+                        stellen van vragen en het gaande houden van het gesprek, terwijl Mila en ik rustig konden
+                        nadenken over de antwoorden van Marjolijn en konden nagaan of we volledig en duidelijk
+                        antwoord hadden gekregen op de vragen.
+                    </p>
+
+                    <p>
+                        Verder hebben we een lijst met vragen opgesteld en gesorteerd op categorie en binnen de
+                        categorie op prioriteit. Dit zorgde voor een duidelijke structuur tijdens de briefing.
+                    </p>
+
+                    <h3>Briefing en debriefing</h3>
+
+                    <p>
+                        De briefing zelf verliep soepel en we hebben antwoord kunnen krijgen op de meeste van onze
+                        vragen. Een risico voor het project is wel dat Marjolijn nog niet duidelijk weet wat ze
+                        wil. Om hiermee om te gaan is het dus een goed idee om vaak en gericht feedback te vragen,
+                        om zo meer inzicht te krijgen in wat Marjolijn wel of niet zou willen.
+                    </p>
+
+                    <p>
+                        Uiteindelijk hebben we op basis van de briefing een debriefing opgesteld. We hebben dit
+                        gedaan aan de hand van MoSCoW en hebben dit doorgestuurd naar Marjolijn. Zij was in
+                        hoofdlijnen tevreden hiermee en na wat kleine aanpassingen hadden we een duidelijk
+                        startpunt om vanaf te beginnen.
+                    </p>
+
+                    <h3>Onderzoek naar te gebruiken technieken</h3>
+
+                    <p>
+                        Binnen de groep hebben we afgesproken om voor de overgebleven dagen vooral goed onderzoek
+                        te doen naar hoe we de tool gaan opzetten. Dit betekent dat iedereen aan de slag is gegaan
+                        met CodePens, schetsen voor de user interface en onderzoek naar bruikbare libraries en web
+                        API's.
+                    </p>
+
+                    <p>
+                        Ik heb vooral gekeken naar de Canvas web API. Ik heb met deze API een opzet gemaakt voor
+                        hoe de animatietool zou kunnen werken in code. Het doel hiervan was tweevoudig:
+                    </p>
+
+                    <ul>
+                        <li>Onderzoeken of de Canvas API geschikt is voor de tool</li>
+                        <li>Experimenteren en zoeken naar een logische code structuur om animaties op te zetten</li>
+                    </ul>
+
+                    <p>Uiteindelijk leidden deze experimenten tot de volgende inzichten:</p>
+
+                    <ul>
+                        <li>
+                            De Canvas API is niet goed bruikbaar voor de animatietool, vooral omdat de Canvas API
+                            rasterized is en dus niet mooi schaalt op het web, in ieder geval niet voor een
+                            animatietool met tekst.
+                        </li>
+                        <li>
+                            De API is prima bruikbaar voor verschillende andere animaties, maar het vereist enorm
+                            veel werk om dit allemaal op te zetten. Het is daarom verstandig om te zoeken naar een
+                            library die dit voor ons doet.
+                        </li>
+                        <li>
+                            De code structuur die het best lijkt te gaan werken voor dit project is om de code op
+                            te splitsen in een user interface, data met betrekking tot de animatie en een
+                            tussenlaag hiertussen die een vertaalslag maakt tussen de animatiedata en de tool.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Uiteindelijk kwam Sabrina met het idee om de library GSAP te gebruiken. Deze library zag
+                        er veelbelovend uit, dus zijn verschillende groepsleden begonnen hier verder naar te
+                        kijken. Hier kwam uiteindelijk een redelijk werkend prototype uit, dus hebben we besloten
+                        om hier voor nu verder mee te werken.
+                    </p>
+
+                    <h3>Bedenken opbouw animatiedata</h3>
+
+                    <p>
+                        Op dit punt hadden we als groep een werkend prototype, maar de structuur van de code was
+                        erg rommelig en niet makkelijk uitbreidbaar. Ook is een belangrijke eis van Marjolijn dat
+                        de animatie uiteindelijk opgeslagen kan worden. Ik had daarom de suggestie gedaan om de
+                        animatie als een object op te bouwen en deze uiteindelijk in JSON-formaat op te slaan en
+                        weer in te laden. Ik heb hierin het voortouw genomen en heb met de groep de volgende
+                        structuur bedacht:
+                    </p>
+
+                    <ul>
+                        <li>Algemene metadata (<code>name</code>, <code>duration</code>)</li>
+                        <li>Elementen (<code>elements</code>)</li>
+                        <li>Groepen (<code>groups</code>)</li>
+                        <li>Animaties per element (<code>animations</code>)</li>
+                    </ul>
+
+                    <p>Dit ziet er bijvoorbeeld zo uit:</p>
+
+                    <pre><code>{
+  "name": "Draaiende Titel",
+  "duration": 5,
+  "elements": {
+    "title": "Welkom"
+  },
+  "groups": {
+    "main": {
+      "groupName": "Hoofdgroep",
+      "members": [
+        "title"
+      ]
+    }
+  },
+  "animations": {
+    "title": {
+      "scaleY": [
+        {
+          "progress": 0,
+          "value": 1,
+          "ease": "none"
+        },
+        {
+          "progress": 1,
+          "value": 2,
+          "ease": "none"
+        }
+      ],
+      "rotation": [
+        {
+          "progress": 0,
+          "value": 0,
+          "ease": "none"
+        },
+        {
+          "progress": 1,
+          "value": 360,
+          "ease": "none"
+        }
+      ]
+    }
+  }
+}</code></pre>
+
+                    <p>In dit voorbeeld:</p>
+
+                    <ul>
+                        <li>De animatie duurt <strong>5 seconden</strong>.</li>
+                        <li>Er is één element: <code>"Welkom"</code>.</li>
+                        <li>Het element zit in de groep <code>"Hoofdgroep"</code>.</li>
+                        <li>Tijdens de animatie draait het element één volledige rotatie.</li>
+                        <li>Tegelijkertijd wordt de hoogte (<code>scaleY</code>) verdubbeld.</li>
+                    </ul>
+
+                    <p>
+                        Ik heb afgesproken met de groep dat ik volgende week deze structuur in de animatietool ga
+                        verwerken.
+                    </p>
+
+                    <h2>Week 2: Opzetten basiscode</h2>
+
+                    <p>
+                        De tweede week stond in het teken van het opzetten van de basiscode van het project. We
+                        hadden op dit punt als groep besloten dat we GSAP zouden gebruiken en zoals ik bij week 1
+                        had benoemd, hebben we ook een opzet van de datastructuur in JSON-formaat. Ik had het op me
+                        genomen om ervoor te zorgen dat deze datastructuur omgezet zou worden in een logische code
+                        architectuur.
+                    </p>
+
+                    <h3>Code architectuur</h3>
+
+                    <p>
+                        Ik ben vooral bekend met object georiënteerde talen, dus ik heb de keuze gemaakt om een
+                        klasse op te zetten die simpelweg <code>AnimationBuilder</code> heet. De klasse wordt door
+                        de UI aangeroepen om keyframes te kunnen toevoegen en de animatie te bouwen en vervolgens af
+                        te spelen. De klasse heeft daarnaast ook de mogelijkheid om het resultaat hiervan om te
+                        zetten naar JSON-formaat zodat de animatie opgeslagen kan worden, en ook om een animatie in
+                        te laden op basis van een JSON-object.
+                    </p>
+
+                    <p>In hoofdlijnen heeft de <code>AnimationBuilder</code> de volgende functies:</p>
+
+                    <ul>
+                        <li>
+                            <code>buildAnimation()</code>, die verantwoordelijk is voor het opbouwen van de
+                            animatie op basis van de keyframes die op de animatie staan.
+                        </li>
+                        <li><code>setKeyframe()</code>, een functie om keyframes aan de animatie toe te voegen.</li>
+                        <li>
+                            <code>play()</code>, <code>pause()</code> en <code>setProgress()</code> en enkele
+                            andere functies om de animatie te kunnen afspelen.
+                        </li>
+                        <li>
+                            <code>loadAnimation()</code> en <code>saveAnimation()</code> om animaties op te kunnen
+                            slaan en in te laden.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Ik ben me ervan bewust dat dit nu erg veel verantwoordelijkheden zijn voor een enkele
+                        klasse, dus daarom ben ik van plan om deze verantwoordelijkheden verder op te splitsen.
+                    </p>
+
+                    <h3>Werken met GSAP</h3>
+
+                    <p>
+                        Ik heb hiervoor leren werken met GSAP. Dit is een library die gebruikt kan worden om
+                        eenvoudig CSS-properties te animeren. Ten eerste maak ik een <code>Timeline</code>-object
+                        aan met:
+                    </p>
+
+                    <pre><code>gsap.timeline({
+	paused: true,
+	repeat: -1,
+	onUpdate: () => {this.onUpdateListener(this.timeline)},
+});</code></pre>
+
+                    <p>
+                        Ik geef hierbij aan dat de timeline standaard op pauze moet staan, oneindig vaak loopt en
+                        ik voeg een <code>onUpdateListener</code> toe. Dit is een callback die wordt aangeroepen
+                        als de timeline wordt aangepast.
+                    </p>
+
+                    <p>
+                        Vervolgens itereer ik over een object van keyframes om ervoor te zorgen dat er keyframes
+                        aan de timeline worden toegevoegd. Dit kan met de volgende code:
+                    </p>
+
+                    <pre><code>this.timeline.to(
+	`.${target}`,
+	{
+		[property]: current.value,
+		duration: timeDifferenceSeconds,
+		ease: current.ease ? current.ease : "none",
+	},
+	last.progress * this.durationSeconds,
+);</code></pre>
+
+                    <p>
+                        In deze code is <code>target</code> het element waarop de keyframe moet worden gezet,
+                        <code>current</code> is de huidige keyframe, <code>last</code> is de vorige keyframe (nodig
+                        om ervoor te zorgen dat de animatie op het juiste moment begint) en
+                        <code>timeDifferenceSeconds</code> is de tijd in seconden tussen de current en last
+                        keyframe.
+                    </p>
+
+                    <p>
+                        In het kort zorgt <code>timeline.to()</code> ervoor dat op een specifiek element een
+                        keyframe wordt gezet, op een specifieke property. De <code>to()</code>-functie houdt in dat
+                        de property een bepaalde startwaarde heeft en naar een nieuwe waarde moet worden
+                        geanimeerd. Dit gebeurt voor een bepaalde <code>duration</code> en volgens een specifieke
+                        <code>ease</code>-functie. De laatste parameter is het tijdstip waarop de animatie moet
+                        beginnen met spelen; dat is het moment waarop een vorige keyframe gezet is, vandaar dat
+                        <code>last</code> nodig is.
+                    </p>
+
+                    <p>
+                        Het was hierbij van belang dat de keyframes op volgorde stonden. Een handigheidje dat ik
+                        hierbij geleerd heb is de <code>Array.sort()</code>-functie van JavaScript:
+                    </p>
+
+                    <pre><code>keyframes.sort((a, b) => a.progress - b.progress);</code></pre>
+
+                    <p>
+                        <code>keyframes</code> is hierbij de lijst van keyframes op een property. Elke keyframe
+                        heeft een <code>progress</code>-waarde, een getal tussen 0 en 1, waarbij 0 het begin van de
+                        animatie is en 1 het einde. Als een keyframe dus een kleinere progress heeft dan een andere
+                        keyframe, komt die keyframe eerst. In de <code>Array.sort()</code>-functie wordt dit als
+                        volgt bepaald: men heeft een keyframe <code>a</code> en een keyframe <code>b</code> die met
+                        elkaar vergeleken worden, en de functie verwacht dat een getal wordt teruggegeven:
+                    </p>
+
+                    <ul>
+                        <li>Een negatief getal geeft aan dat <code>a</code> voor <code>b</code> komt</li>
+                        <li>Een positief getal geeft aan dat <code>b</code> voor <code>a</code> komt</li>
+                        <li>0 geeft aan dat <code>a</code> en <code>b</code> gelijk aan elkaar zijn</li>
+                    </ul>
+
+                    <p>
+                        <code>a.progress - b.progress</code> is dus precies wat je nodig hebt: als de progress van
+                        <code>a</code> voor <code>b</code> komt (en dus kleiner is), dan is het resultaat negatief
+                        en weet JavaScript dat <code>a</code> voor <code>b</code> moet komen. Deze functie geeft
+                        dan uiteindelijk een gesorteerde lijst van keyframes terug.
+                    </p>
+
+                    <h3>Doorwerken en vooruitblikken</h3>
+
+                    <p>
+                        Jeppe en Senna hebben vervolgens gewerkt aan de UI-kant om ervoor te zorgen dat wanneer een
+                        waarde van een slider wordt aangepast, de juiste keyframe op het tekstelement (voor nu een
+                        placeholder woord) wordt gezet. Sabrina en Mila hebben gewerkt aan een opzetje voor de UI
+                        zelf, zodat dit allemaal voor de gebruiker goed te bedienen valt.
+                    </p>
+
+                    <p>
+                        Volgende week ga ik werken aan het netter opsplitsen van de <code>AnimationBuilder</code>
+                        klasse zodat deze minder verantwoordelijkheden heeft. Daarnaast hoop ik dan ook goed door
+                        te werken aan het uitbreiden van wat er mogelijk is met deze klassen, zodat ik de week
+                        daarop kan gaan werken aan de save- en loadfunctionaliteit.
+                    </p>
+
+
+                    <h2>Week 3: Meters maken</h2>
+
+                    <p>
+                        De derde week was wat turbulent. In het begin van de week was ik rustig aan het werken om
+                        de code architectuur te verbeteren en grotendeels af te maken, maar in het tweede gedeelte
+                        van de week ben ik vooral druk bezig geweest om de code leesbaarder te maken voor mijn
+                        groepsgenoten.
+                    </p>
+
+                    <h3>Verbeteren code</h3>
+
+                    <p>
+                        Vorige week had ik al aangegeven dat mijn code nog vrij rommelig was. De
+                        <code>AnimationBuilder</code> is op dit moment een vrij complexe klasse met verschillende
+                        verantwoordelijkheden. Dit heb ik in eerste instantie bewust zo gedaan, omdat het een
+                        valkuil van mij is om direct vanaf het begin een ingewikkelde code architectuur op te
+                        zetten die achteraf gezien niet handig blijkt te zijn, of soms wel handig maar overkill
+                        voor het project. Daarnaast moet ik natuurlijk ook rekening houden met de leesbaarheid voor
+                        mijn groepsgenoten. Op dit punt was echter duidelijk dat de code verder opgedeeld moest
+                        worden.
+                    </p>
+
+                    <p>De <code>AnimationBuilder</code> had op dit punt globaal de volgende verantwoordelijkheden:</p>
+
+                    <ul>
+                        <li>Het opslaan/inladen van de animatie</li>
+                        <li>Het bijhouden van de data van de animatie</li>
+                        <li>Het opbouwen van de animatie</li>
+                        <li>Het afspelen van de animatie</li>
+                    </ul>
+
+                    <p>
+                        Ik denk dat idealiter elk van deze aspecten zijn eigen klasse zou moeten zijn, maar ik heb
+                        ervoor gekozen, vooral met oog op simpliciteit, om de code op te delen in twee stukken:
+                    </p>
+
+                    <ul>
+                        <li>
+                            Een <code>AnimationData</code>-klasse die de data van de animatie bevat en ervoor
+                            zorgt dat deze kan worden opgeslagen en ingeladen vanuit JSON.
+                        </li>
+                        <li>
+                            Een <code>AnimationPlayer</code>-klasse die de animatie opbouwt en verantwoordelijk is
+                            voor het afspelen ervan.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Het fijne van deze architectuur is dat de dependency van GSAP, die eerst nog in de
+                        <code>AnimationBuilder</code> zat, verplaatst kan worden naar de
+                        <code>AnimationPlayer</code>. Op deze manier kan de <code>AnimationData</code>-klasse
+                        bestaan zonder te weten welke library er gebruikt wordt om de animatie op te bouwen. De
+                        <code>AnimationData</code> wordt meegegeven aan de <code>AnimationPlayer</code>, wat leidt
+                        tot een soort dependency inversion: GSAP wordt nu afhankelijk van de domeinklasse, in
+                        plaats van andersom.
+                    </p>
+
+                    <h3>Feedback van de groep</h3>
+
+                    <p>
+                        Ik was zeer tevreden met deze opsplitsing, maar had hierbij niet goed de complexiteit van
+                        de code in de gaten gehouden. Tijdens een code review met Cyd kwam ik erachter dat de rest
+                        van de groep nog niet mee was met de opbouw van de code, en dat dit de projectvoortgang in
+                        gevaar bracht.
+                    </p>
+
+                    <p>
+                        Ik heb daarom het tweede gedeelte van de week hard gewerkt om ervoor te zorgen dat de code
+                        duidelijk was voor groepsgenoten. Dit heb ik gedaan door eerst samen met Mila de code door
+                        te spitten: zij stelde vragen over de code die ik probeerde te beantwoorden, en zij schreef
+                        in haar eigen woorden comments die de code uitlegden. Dit zorgde er niet alleen voor dat de
+                        code duidelijker werd voor de groep, maar ook dat kleine foutjes of onhandigheden aan het
+                        licht kwamen.
+                    </p>
+
+                    <p>
+                        In sommige gevallen was het nodig om de JavaScript-kennis van de groep bij te spijkeren; zo
+                        vond ik het van belang dat er gewerkt werd met een <code>Map</code>, omdat dit praktisch
+                        was voor de code architectuur en de code alleen maar ingewikkelder zou worden als dat een
+                        array zou zijn. Maar er waren ook plekken in de code die door deze review onnodig complex
+                        bleken te zijn. Zo had ik op verschillende plaatsen een getter die, in plaats van de
+                        originele map, een object teruggaf, zoals hieronder:
+                    </p>
+
+                    <pre><code>getElements() {
+return structuredClone(Object.fromEntries(this.#elements));
+}</code></pre>
+
+                    <p>Vervolgens werd dit ergens anders in de code op de volgende manier gebruikt:</p>
+
+                    <pre><code>Object.entries(elements).forEach(([id]) => {targetIds.push(id);});</code></pre>
+
+                    <p>
+                        De functies <code>Object.fromEntries()</code> en <code>Object.entries()</code> zijn vrij
+                        omslachtig en lezen moeilijk. Op het moment dat ik dit schrijf, merk ik zelf ook te
+                        twijfelen wat de functies ook alweer precies doen, wat aangeeft dat de code beter kan.
+                    </p>
+
+                    <p>Het is veel makkelijker om de map direct terug te geven:</p>
+
+                    <pre><code>getElements() {
+	return structuredClone(this.#elements);
+}</code></pre>
+
+                    <p>De eerdere code wordt dan simpelweg:</p>
+
+                    <pre><code>elements.keys().forEach(id => targetIds.push(id));</code></pre>
+
+                    <p>
+                        Uiteraard moeten groepsgenoten dan nog steeds begrijpen dat <code>Map.keys()</code> een
+                        iterator teruggeeft voor alle keys van een map, maar zelfs als dit niet in een keer
+                        duidelijk is, is de code een stuk leesbaarder.
+                    </p>
+
+                    <p>
+                        Verder heb ik ook gewerkt met JSDoc. Hiermee kan op de volgende manier documentatie worden
+                        toegevoegd aan JS:
+                    </p>
+
+                    <pre><code>/**
+* @description Create a new element in the animation
+* @param {string} elementName The display name of the new element
+* @returns {string} the internal UUID of the element used for referencing
+*/</code></pre>
+
+                    <p>
+                        Met <code>@description</code> kan een omschrijving worden toegevoegd aan een functie, met
+                        <code>@param {type} naam</code> kan een parameter worden omschreven en het type worden
+                        aangegeven, en met <code>@returns {type}</code> kan worden aangegeven wat de functie
+                        teruggeeft en van welk type die waarde is.
+                    </p>
+
+                    <p>
+                        Dit bleek veel waarde te hebben voor dit project, omdat groepsgenoten nu een beter beeld
+                        hadden van wat een functie deed voordat ze de code begonnen met lezen, waardoor ze de code
+                        ook sneller konden begrijpen.
+                    </p>
+
+                    <h3>Vooruitblik</h3>
+
+                    <p>
+                        Dit alles heeft veel tijd gekost, waardoor ik deze week niet ben toegekomen aan de
+                        undo/redo-functionaliteit en de savefunctionaliteit. Ik vind beide zeer belangrijk voor het
+                        project, dus ik hoop hier volgende week mee aan de slag te kunnen gaan, zodat in week 5 de
+                        puntjes op de i gezet kunnen worden.
+                    </p>
+
+                    <h2>Week 4: Afwerken functionaliteiten</h2>
+
+                    <p>
+                        De vierde week stond in het teken van het afronden van de belangrijkste functionaliteiten,
+                        namelijk de save/load-functionaliteit en het implementeren van de undo- en redo-knoppen.
+                        Gelukkig zat dit door de eerder gemaakte code architectuur in hoofdlijnen best mee.
+                    </p>
+
+                    <h3>Save/load</h3>
+
+                    <p>
+                        Deze week heb ik gewerkt aan de save- en loadfunctionaliteit van de animatietool. Omdat ik
+                        in de voorgaande weken veel tijd had besteed aan het opzetten van een goede datastructuur
+                        (<code>AnimationData</code>) en het kunnen serialiseren van deze data naar JSON, bleek dit
+                        achteraf een goede investering te zijn. Het opslaan van een project bestond daardoor
+                        grotendeels uit het omzetten van de animatiedata naar JSON en deze vervolgens aan te bieden
+                        als download.
+                    </p>
+
+                    <p>
+                        Wel wilde ik dat een opgeslagen animatie ook echt zelfstandig gebruikt kon worden, zonder
+                        afhankelijk te zijn van de editor. Daarom heb ik ervoor gekozen om niet alleen de JSON op
+                        te slaan, maar een volledig HTML-bestand te genereren waarin de animatie en alle benodigde
+                        data zijn ingebed. Hierdoor kan een gebruiker een animatie openen door simpelweg het
+                        HTML-bestand in een browser te openen.
+                    </p>
+
+                    <p>
+                        Het genereren van zo'n HTML-bestand was een interessante uitdaging. De complete HTML, CSS
+                        en JavaScript worden als een template string opgebouwd, waarna de JSON-data rechtstreeks in
+                        het document wordt geplaatst. Hierdoor hoeft het bestand geen externe JSON meer op te
+                        halen, wat belangrijk is omdat een lokaal geopend HTML-bestand (<code>file://</code>) geen
+                        toegang heeft tot <code>fetch()</code> zonder een webserver.
+                    </p>
+
+                    <p>
+                        Daarnaast heb ik ervoor gezorgd dat ook instellingen zoals het gekozen thema worden
+                        opgeslagen. Bij het genereren van de HTML worden de juiste CSS-variabelen direct in het
+                        document geplaatst, zodat de animatie er hetzelfde uitziet als tijdens het ontwerpen.
+                    </p>
+
+                    <p>
+                        Voor het inladen van een project kon ik gebruikmaken van de eerder gemaakte
+                        <code>fromJSON()</code>-functie binnen de <code>AnimationData</code>-klasse. Nadat een
+                        bestand is geselecteerd, wordt de JSON ingelezen met een <code>FileReader</code> en wordt
+                        de complete animatie opnieuw opgebouwd. Vervolgens worden de interface en preview opnieuw
+                        gesynchroniseerd met de geladen data. Hierbij heb ik er bewust voor gekozen om ook de
+                        undo/redo-geschiedenis leeg te maken en direct een nieuw beginsnapshot aan te maken.
+                        Hiermee voorkom ik dat een gebruiker na het openen van een nieuw project nog kan teruggaan
+                        naar een volledig andere animatie.
+                    </p>
+
+                    <p>
+                        Achteraf ben ik tevreden met deze aanpak. Doordat de data en de speler al los van elkaar
+                        waren ontworpen, hoefde de save/load-functionaliteit nauwelijks rekening te houden met de
+                        interne werking van GSAP. Het enige wat opgeslagen hoeft te worden is de animatiedata; de
+                        animatie zelf wordt bij het openen opnieuw opgebouwd.
+                    </p>
+
+                    <h3>Undo/redo</h3>
+
+                    <p>
+                        Naast de save/load-functionaliteit heb ik deze week de undo- en redofunctionaliteit
+                        toegevoegd. Dit bleek een mooie toepassing van het Memento Pattern, een ontwerppatroon dat
+                        bedoeld is om eenvoudig eerdere toestanden van een object te kunnen herstellen zonder dat
+                        de rest van de applicatie weet hoe deze toestand intern is opgebouwd.
+                    </p>
+
+                    <p>
+                        Ik heb hiervoor een aparte <code>History</code>-klasse gemaakt die een lijst van snapshots
+                        (mementos) bewaart. Elke snapshot is een volledige kopie van de huidige
+                        <code>AnimationData</code>. Om te voorkomen dat een wijziging achteraf ook oude snapshots
+                        zou aanpassen, worden alle mementos opgeslagen met behulp van
+                        <code>structuredClone()</code>. Hierdoor bevat iedere snapshot een volledig onafhankelijke
+                        kopie van de animatie.
+                    </p>
+
+                    <p>
+                        De klasse houdt daarnaast een <code>currentIndex</code> bij die aangeeft welke snapshot op
+                        dit moment actief is. Wanneer een nieuwe wijziging wordt opgeslagen nadat de gebruiker eerst
+                        een aantal keer op undo heeft gedrukt, worden alle toekomstige snapshots verwijderd. Dit
+                        gedrag is hetzelfde als in de meeste teksteditors en voorkomt dat er meerdere vertakkingen
+                        in de geschiedenis ontstaan.
+                    </p>
+
+                    <p>
+                        De implementatie van undo en redo zelf bleef daardoor relatief eenvoudig. De
+                        <code>History</code>-klasse hoeft alleen de index naar voren of achteren te verplaatsen en
+                        de juiste snapshot terug te geven. Vervolgens wordt deze snapshot weer teruggezet in de
+                        <code>AnimationData</code>, waarna de interface en de GSAP-timeline opnieuw worden
+                        opgebouwd.
+                    </p>
+
+                    <p>
+                        Tijdens het ontwikkelen realiseerde ik me opnieuw hoe belangrijk een goede scheiding tussen
+                        data en presentatie is. Doordat alle animatiegegevens zich in één datastructuur bevinden,
+                        is undo/redo uiteindelijk niets meer dan het terugzetten van een eerdere versie van die
+                        data. Als de UI of GSAP zelf de bron van waarheid was geweest, zou deze functionaliteit
+                        aanzienlijk ingewikkelder zijn geworden.
+                    </p>
+
+                    <p>
+                        Ik ben tevreden met hoe deze functionaliteit uiteindelijk is geworden. De combinatie van
+                        snapshots en het Memento Pattern levert een relatief eenvoudige, maar betrouwbare oplossing
+                        op die bovendien goed uitbreidbaar blijft wanneer er later nieuwe onderdelen aan de
+                        animatiedata worden toegevoegd.
+                    </p>
+
+                    <h3>Vooruitblik</h3>
+
+                    <p>
+                        Tijdens de demo met Marjolijn bleken er toch nog enkele fouten te zitten in de code, om die
+                        reden is het van belang dat we in de laatste week alles op alles zetten om deze foutjes op
+                        te lossen. Daarnaast staat in de laatste week ook de expo op het programma, die natuurlijk
+                        ook voorbereid moet worden.
+                    </p>
+
+
+                    <h2>Week 5: Voorbereiden overdracht en expo</h2>
+
+                    <p>
+                        De laatste week was kort, maar rommelig. In deze week heb ik niet echt heel veel
+                        benoemingswaardige taken gedaan. We hebben aan het begin van de week als groep overlegd hoe
+                        we de expo willen aanpakken. In het gesprek met Marjolijn kwam vorige week al naar voren
+                        dat het ons (en haar) een leuk idee leek om tijdens de expo mensen de animatietool te laten
+                        gebruiken om verschillende woorden te animeren. Marjolijn had de woorden naar ons gestuurd
+                        en wij hadden ze op kaartjes uitgeprint. Verder hebben we nog wat snoepjes gekocht
+                        (ruitvormige spekjes die op keyframes lijken en snoepsleutels, oftewel snoepkeyframes) en
+                        hebben we hard doorgewerkt aan het afronden van de design rationale, wat vooral gedaan is
+                        door Jeppe, Mila en Sabrina.
+                    </p>
+
+                    <p>
+                        Vervolgens hadden we halverwege de week de overdracht met Marjolijn en zij was zeer
+                        tevreden met de animatietool; ze heeft ons misschien wel 10 keer bedankt en keek erg uit
+                        naar het gebruik in de praktijk voor haar PD. Verder hebben we haar nog wat advies gegeven
+                        over eventuele vervolgstappen, omdat een aantal klasgenoten hun korte stage bij haar gaan
+                        houden en waarschijnlijk dus ook nog wat verder gaan werken aan de animatietool.
+                    </p>
+
+                    <p>
+                        Bij de expo hebben we alles klaargezet en hebben nog enkele klasgenoten een woord
+                        geanimeerd, en dit leek allemaal best goed te gaan. Het docententeam leek ook tevreden te
+                        zijn met ons werk, dus daar ben ik erg blij mee.
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
 </body>
 
 </html>

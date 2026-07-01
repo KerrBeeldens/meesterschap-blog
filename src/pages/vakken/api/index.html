@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vakken - API</title>
+
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../../../shared/fav-dark.svg" media="(prefers-color-scheme: dark)">
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem("theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.dataset.theme = saved;
+                }
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="nav-bar">
+        <span class="nav-logo">Vakken</span>
+        <div class="nav-hints">
+            <div class="hint">
+            </div>
+            <div class="hint">
+                <a href="../../index.html" class="back-link">
+                    <span>Terug</span>
+                    <div class="btn-symbol btn-circle"><span class="circle"></span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="wrapper">
+            <article>
+                <time class="publication-date" datetime="2026-06-30">12 mei 2026</time>
+
+                <h1>API</h1>
+
+                <a href="https://github.com/KerrBeeldens/LightWave" class="project-link" target="_blank"
+                    rel="noopener noreferrer">Bekijk project</a>
+
+                <section class="introduction">
+                    Voor het vak API stond het ontwikkelen van een interactieve webapplicatie met externe API's
+                    centraal. Het doel was om een project te bouwen waarin verschillende webtechnieken samenkomen,
+                    zoals server-side rendering met Astro en het werken met externe services. Gedurende het vak heb
+                    ik een applicatie ontwikkeld die de sfeer van een ruimte aanpast op basis van de emotie van de
+                    gebruiker door muziek af te spelen via Spotify en de verlichting aan te passen via Philips Hue.
+
+                    <p class="author">Geschreven door <a href="https://github.com/KerrBeeldens">Kerr</a></p>
+                </section>
+
+                <hr>
+
+                <section class="body">
+
+                    <h2>Resultaat</h2>
+
+                    <p>
+                        Voor dit vak heb ik Light Wave ontwikkeld, een webapplicatie die Spotify en Philips Hue met
+                        elkaar combineert. De gebruiker logt in met beide diensten en kiest vervolgens een emotie,
+                        zoals blij, ontspannen of boos. Op basis van deze keuze wordt automatisch een
+                        Spotify-playlist samengesteld en worden de Philips Hue-lampen aangepast naar een bijpassende
+                        kleur.
+                    </p>
+
+                    <p>
+                        De applicatie is gebouwd met Astro en maakt gebruik van server-side endpoints voor de
+                        communicatie met beide API's. Voor Spotify heb ik zowel de Web API als de Web Playback SDK
+                        gebruikt om playlists aan te maken en muziek direct in de browser af te spelen. Hiervoor heb
+                        ik een volledige OAuth-flow geïmplementeerd. Daarnaast heb ik een database met ruim 270.000
+                        Spotify-nummers geïmporteerd in Turso en via Astro DB gebruikt om nummers te selecteren die
+                        passen bij de gekozen emotie.
+                    </p>
+
+                    <p>
+                        Voor Philips Hue heb ik eveneens een OAuth-flow opgezet en endpoints ontwikkeld waarmee
+                        alle verbonden lampen tegelijkertijd aangepast kunnen worden. Door beide API's te combineren
+                        ontstaat één applicatie die zowel de muziek als de verlichting automatisch afstemt op de
+                        gewenste sfeer.
+                    </p>
+
+                    <p>
+                        Tijdens de herkansing heb ik de applicatie voorzien van een volledige gebruikersinterface
+                        met meerdere pagina's, herbruikbare Astro Components, layouts en View Transitions voor
+                        vloeiende paginawisselingen. Daarnaast heb ik de backend opgeschoond door gebruik te maken
+                        van een eigen <code>HttpError</code>-klasse voor consistente foutafhandeling.
+                    </p>
+
+                    <p>
+                        Tijdens de ontwikkeling heb ik ook afzonderlijke onderdelen getest, zoals het genereren van
+                        playlists en het aansturen van Philips Hue.
+                    </p>
+
+                    <h2>Wat heb ik geleerd?</h2>
+
+                    <p>
+                        Tijdens dit vak heb ik veel geleerd over het ontwikkelen van moderne webapplicaties met
+                        externe API's. Ik heb ervaring opgedaan met Astro, waarbij ik heb geleerd hoe server-side
+                        rendering, Astro Components, layouts en API-endpoints samenwerken binnen één project.
+                    </p>
+
+                    <p>
+                        Daarnaast heb ik voor het eerst zelfstandig volledige OAuth-flows geïmplementeerd voor
+                        zowel Spotify als Philips Hue. Hierdoor heb ik een beter begrip gekregen van authenticatie,
+                        access tokens en het veilig afhandelen van gevoelige gegevens via server-side endpoints.
+                    </p>
+
+                    <p>
+                        Ook heb ik gewerkt met Astro DB en Turso, waardoor ik ervaring heb opgedaan met het
+                        opzetten van een cloud database en het uitvoeren van databasequeries om geschikte
+                        muzieknummers te selecteren.
+                    </p>
+
+                    <p>
+                        Op het gebied van JavaScript heb ik geleerd efficiënter om te gaan met asynchrone code door
+                        gebruik te maken van onder andere <code>Promise.all()</code>,
+                        <code>Promise.allSettled()</code>, custom events en exception handling met een eigen
+                        errorklasse. Daarnaast heb ik geleerd hoe verschillende API's en SDK's met elkaar
+                        samenwerken en hoe kleine synchronisatieproblemen tussen beide systemen opgelost kunnen
+                        worden.
+                    </p>
+
+                    <p>
+                        Tot slot heb ik meer ervaring opgedaan met het ontwerpen van een complete
+                        gebruikerservaring. Door gebruik te maken van herbruikbare componenten, layouts en View
+                        Transitions heb ik geleerd hoe zowel de technische architectuur als de gebruikservaring van
+                        een webapplicatie verbeterd kunnen worden.
+                    </p>
+
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <div class="footer-bar"></div>
+
+</body>
+
+</html>
