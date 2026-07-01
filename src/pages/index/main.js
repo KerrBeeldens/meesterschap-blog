@@ -297,7 +297,7 @@ function openArticle() {
         return;
     }
 
-    const url = `/${toKebabCase(categoryName)}/${toKebabCase(itemName)}`;
+    const url = `/meesterschap-blog/${toKebabCase(categoryName)}/${toKebabCase(itemName)}`;
 
     window.location.href = url;
 }
